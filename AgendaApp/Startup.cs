@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AgendaApp.Data;
+﻿using AgendaApp.Data;
 using AgendaApp.Data.Entities;
+using AgendaApp.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +24,7 @@ namespace AgendaApp
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Enable MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // DB
@@ -53,9 +50,12 @@ namespace AgendaApp
             // AutoMapper
             var config = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<AddCategoryVM, Category>();
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+
+            // DI for services
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -66,6 +66,7 @@ namespace AgendaApp
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
         }
