@@ -48,10 +48,20 @@ namespace AgendaApp.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            var existingCategories = categoryService.GetAll();
+            foreach (var existingCategory in existingCategories)
+            {
+                if (string.Equals(existingCategory.Title.ToLower(), model.Title.ToLower()))
+                {
+                    ModelState.AddModelError("", "You already have this category");
+                    return View(model);
+                }
+            }
+
             var category = mapper.Map<Category>(model);
             categoryService.Create(category);
 
-            return RedirectToAction("Index", "Profile");
+            return RedirectToAction("Index", "Category");
         }
 
         [HttpGet]
@@ -69,12 +79,22 @@ namespace AgendaApp.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            var existingCategories = categoryService.GetAll();
+            foreach (var existingCategory in existingCategories)
+            {
+                if (string.Equals(existingCategory.Title.ToLower(), model.Title.ToLower()))
+                {
+                    ModelState.AddModelError("", "You already have this category");
+                    return View(model);
+                }
+            }
+
             categoryService.Update(model);
 
             return RedirectToAction(nameof(CategoryController.Index));
         }
 
-        [HttpDelete]
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             categoryService.Delete(id);

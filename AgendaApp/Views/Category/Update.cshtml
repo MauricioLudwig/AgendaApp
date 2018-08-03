@@ -1,1 +1,37 @@
-﻿
+﻿@model EditCategoryVM
+
+@{
+    ViewBag.Title = "Edit Category";
+}
+
+<div class="card">
+    <div class="card-header text-center">
+        Edit Category
+    </div>
+    <div class="card-body">
+
+        <form asp-controller="Category" asp-action="Update" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="invalidModel"></div>
+
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <span asp-validation-for="Title" class="invalidFormSubmission"></span>
+                <input asp-for="Title" class="form-control" />
+                <small class="form-text text-muted">Max 50 characters allowed.</small>
+            </div>
+
+            <input type="submit" class="btn btn-warning" value="Save" />
+
+        </form>
+
+        <hr />
+
+        <form asp-controller="Category" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+            <div class="text-center">
+                <input type="submit" class="btn btn-outline-danger" value="Remove" />
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -26,7 +26,9 @@ namespace AgendaApp.Services
 
         public IEnumerable<Category> GetAll()
         {
-            var categories = context.Categories.Where(o => o.ApplicationUserId == userId);
+            var categories = context.Categories
+                .Where(o => o.ApplicationUserId == userId)
+                .OrderBy(o => o.Title);
             return categories;
         }
 
@@ -45,7 +47,9 @@ namespace AgendaApp.Services
 
         public void Update(EditCategoryVM category)
         {
-            throw new NotImplementedException();
+            var selectedCategory = context.Categories.Find(category.Id);
+            selectedCategory.Title = category.Title;
+            context.SaveChanges();
         }
 
         public void Delete(int id)

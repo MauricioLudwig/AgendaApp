@@ -1,10 +1,21 @@
 ﻿@model IEnumerable<CategoryVM>
 
-<p>Category - Index</p>
+<div class="card mb-2">
+    <div class="card-body text-center">
+        <p class="lead">Your Categories</p>
+        <div>
+            <span>Want to add another? </span>
+            <a asp-controller="Category" asp-action="Create">Create one now.</a>
+            <p>Click a category to edit or remove.</p>
+        </div>
+    </div>
+</div>
 
-<ul>
+<div class="list-group">
     @foreach (var category in Model)
     {
-        <li>@category.Title</li>
+        <a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" class="list-group-item list-group-item-light list-group-item-action mb-2">
+            <p class="lead">@category.Title</p>
+        </a>
     }
-</ul>
+</div>
