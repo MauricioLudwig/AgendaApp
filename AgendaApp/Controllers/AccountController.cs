@@ -41,7 +41,7 @@ namespace AgendaApp.Controllers
             var alreadySignedIn = signInManager.IsSignedIn(User);
 
             if (alreadySignedIn)
-                return RedirectToAction("", "");
+                return RedirectToAction("Index", "Profile");
 
             var model = new LoginVM
             {
@@ -71,7 +71,7 @@ namespace AgendaApp.Controllers
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                         return Redirect(model.ReturnUrl);
                     else
-                        return RedirectToAction("", "");
+                        return RedirectToAction("Index", "Profile");
                 }
             }
 
@@ -85,7 +85,7 @@ namespace AgendaApp.Controllers
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                         return Redirect(model.ReturnUrl);
                     else
-                        return RedirectToAction("", "");
+                        return RedirectToAction("Index", "Profile");
                 }
             }
 
@@ -99,7 +99,7 @@ namespace AgendaApp.Controllers
         {
             var alreadySignedIn = signInManager.IsSignedIn(User);
             if (alreadySignedIn)
-                return RedirectToAction("", "");
+                return RedirectToAction("Index", "Profile");
 
             return View();
         }
@@ -132,7 +132,7 @@ namespace AgendaApp.Controllers
             if (result.Succeeded)
             {
                 await signInManager.SignInAsync(user, false);
-                return RedirectToAction("", "");
+                return RedirectToAction("Index", "Profile");
             }
             else
             {
@@ -149,7 +149,7 @@ namespace AgendaApp.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("", "");
+            return RedirectToAction("Index", "Home");
         }
 
     }

@@ -1,1 +1,10 @@
-﻿
+﻿@model IEnumerable<CategoryVM>
+
+<p>Category - Index</p>
+
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>@category.Title</li>
+    }
+</ul>

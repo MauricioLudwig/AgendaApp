@@ -38,6 +38,7 @@ namespace AgendaApp.Services
 
         public void Create(Category category)
         {
+            category.ApplicationUserId = userId;
             context.Categories.Add(category);
             context.SaveChanges();
         }
