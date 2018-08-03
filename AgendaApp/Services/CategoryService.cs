@@ -1,7 +1,6 @@
 ﻿using AgendaApp.Data;
 using AgendaApp.Data.Entities;
 using AgendaApp.ViewModels;
-using AgendaApp.ViewModels.Category;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System;

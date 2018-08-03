@@ -1,6 +1,5 @@
 ﻿using AgendaApp.Data.Entities;
 using AgendaApp.ViewModels;
-using AgendaApp.ViewModels.Category;
 using System.Collections.Generic;
 
 namespace AgendaApp.Services
