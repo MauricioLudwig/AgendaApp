@@ -57,10 +57,10 @@ namespace AgendaApp.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var model = categoryService.GetById(id);
-            var mapped = mapper.Map<EditCategoryVM>(model);
+            var category = categoryService.GetById(id);
+            var model = mapper.Map<EditCategoryVM>(category);
 
-            return View(mapped);
+            return View(model);
         }
 
         [HttpPost]

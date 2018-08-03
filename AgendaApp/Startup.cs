@@ -1,5 +1,6 @@
 ﻿using AgendaApp.Data;
 using AgendaApp.Data.Entities;
+using AgendaApp.Services;
 using AgendaApp.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -56,6 +57,7 @@ namespace AgendaApp
             services.AddSingleton(mapper);
 
             // DI for services
+            services.AddScoped<ICategoryService, CategoryService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -70,5 +72,6 @@ namespace AgendaApp
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
         }
+
     }
 }

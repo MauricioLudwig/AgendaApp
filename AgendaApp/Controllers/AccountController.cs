@@ -23,6 +23,20 @@ namespace AgendaApp.Controllers
 
         [AllowAnonymous]
         [HttpGet]
+        public IActionResult Login()
+        {
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult Login(int id)
+        {
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
         public IActionResult Register()
         {
             return View();

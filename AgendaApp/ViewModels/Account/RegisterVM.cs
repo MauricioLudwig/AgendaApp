@@ -16,8 +16,6 @@ namespace AgendaApp.ViewModels
         [MaxLength(256)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [MaxLength(256)]
-        public string Alias { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }
