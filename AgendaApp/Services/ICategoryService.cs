@@ -1,5 +1,5 @@
 ﻿using AgendaApp.Data.Entities;
-using AgendaApp.ViewModels;
+using AgendaApp.Models;
 using System.Collections.Generic;
 
 namespace AgendaApp.Services

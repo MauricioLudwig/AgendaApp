@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AgendaApp.Data.Entities;
 using AgendaApp.Services;
-using AgendaApp.ViewModels;
+using AgendaApp.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +31,7 @@ namespace AgendaApp.Controllers
         public IActionResult Index()
         {
             var categories = categoryService.GetAll();
-            var model = mapper.Map<List<CategoryIndexVM>>(categories);
+            var model = mapper.Map<List<CategoryVM>>(categories);
 
             return View(model);
         }
@@ -43,7 +43,7 @@ namespace AgendaApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(AddCategoryVM model)
+        public IActionResult Create(CreateCategoryVM model)
         {
             if (!ModelState.IsValid)
                 return View(model);

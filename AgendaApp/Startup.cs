@@ -1,7 +1,7 @@
 ﻿using AgendaApp.Data;
 using AgendaApp.Data.Entities;
 using AgendaApp.Services;
-using AgendaApp.ViewModels;
+using AgendaApp.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,7 +51,7 @@ namespace AgendaApp
             // AutoMapper
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<AddCategoryVM, Category>();
+                cfg.CreateMap<CreateCategoryVM, Category>();
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
