@@ -8,9 +8,17 @@ namespace AgendaApp.Controllers
 {
     public class AgendaController : Controller
     {
-        public IActionResult Index()
+
+        public AgendaController()
+        {
+
+        }
+
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
+
     }
 }

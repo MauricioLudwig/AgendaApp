@@ -2,14 +2,35 @@
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+@if (signInManager.IsSignedIn(User))
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1">
 
-    @if (signInManager.IsSignedIn(User))
-    {
-    }
-    else
-    {
-        <p></p>
-    }
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-controller="Agenda" asp-action="Create">Create Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Category" asp-action="Index">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Profile" asp-action="Index">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Profile" asp-action="Edit">Edit Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Logout">Sign out</a>
+                    </li>
+                </ul>
 
-</nav>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p></p>
+}

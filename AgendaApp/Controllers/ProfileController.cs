@@ -12,7 +12,14 @@ namespace AgendaApp.Controllers
     public class ProfileController : Controller
     {
 
+        [HttpGet]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit()
         {
             return View();
         }
