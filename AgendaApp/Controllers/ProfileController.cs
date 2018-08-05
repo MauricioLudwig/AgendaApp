@@ -3,12 +3,12 @@ using System.Linq;
 using AgendaApp.Data;
 using AgendaApp.Data.Entities;
 using AgendaApp.Models;
+using AgendaApp.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AgendaApp.Controllers
 {
@@ -18,14 +18,16 @@ namespace AgendaApp.Controllers
     {
 
         private AgendaDbContext context;
+        private IAgendaService agendaService;
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signInManager;
         private IMapper mapper;
         private string userId { get; set; }
 
-        public ProfileController(AgendaDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper, IHttpContextAccessor httpContextAccessor)
+        public ProfileController(AgendaDbContext context, IAgendaService agendaService, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             this.context = context;
+            this.agendaService = agendaService;
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.mapper = mapper;
@@ -67,13 +69,9 @@ namespace AgendaApp.Controllers
         [HttpGet]
         public IActionResult GetAgendas()
         {
-            var agendas = context.Agendas
-               .Include(o => o.Items)
-               .Where(o => o.ApplicationUserId == userId)
-               .ToList();
+            var model = new List<DashboardAgendaVM>();
 
-            var agendasVM = new List<DashboardAgendaVM>();
-
+            var agendas = agendaService.GetAll();
             foreach (var agenda in agendas)
             {
                 var agendaVM = new DashboardAgendaVM
@@ -82,6 +80,8 @@ namespace AgendaApp.Controllers
                     Title = agenda.Title,
                     CreatedAt = agenda.CreatedAt,
                     Deadline = agenda.Deadline,
+                    CompletedItemsCount = agenda.Items.Where(o => o.Completed == true).Count(),
+                    TotalItemsCount = agenda.Items.Count(),
                     Categories = new List<DashboardCategoryVM>()
                 };
                 var categories = agenda.Items.GroupBy(o => o.Category);
@@ -100,10 +100,10 @@ namespace AgendaApp.Controllers
                     };
                     agendaVM.Categories.Add(categoryVM);
                 }
-                agendasVM.Add(agendaVM);
+                model.Add(agendaVM);
             }
 
-            return PartialView("_Agendas", agendasVM);
+            return PartialView("_Agendas", model);
         }
 
     }

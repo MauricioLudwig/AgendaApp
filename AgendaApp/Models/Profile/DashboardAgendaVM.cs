@@ -12,5 +12,7 @@ namespace AgendaApp.Models
         public DateTime CreatedAt { get; set; }
         public DateTime? Deadline { get; set; }
         public List<DashboardCategoryVM> Categories { get; set; }
+        public int CompletedItemsCount { get; set; }
+        public int TotalItemsCount { get; set; }
     }
 }

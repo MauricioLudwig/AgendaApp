@@ -13,10 +13,11 @@
                 container.html(result);
             },
             error: function () {
+                container.html('');
                 alert('Something went wrong.');
             }
         });
-    };
+    }
 
     $(document).on('change', '.item-checkbox', function () {
         var id = $(this).prop('id');

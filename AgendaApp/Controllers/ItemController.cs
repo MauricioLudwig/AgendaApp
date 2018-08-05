@@ -23,17 +23,10 @@ namespace AgendaApp.Controllers
         [HttpPost]
         public IActionResult Check(int id)
         {
-            try
-            {
-                var item = context.Items.Find(id);
-                item.Completed = !item.Completed;
-                context.SaveChanges();
-                return Ok();
-            }
-            catch
-            {
-                return RedirectToAction("Index", "Profile");
-            }
+            var item = context.Items.Find(id);
+            item.Completed = !item.Completed;
+            context.SaveChanges();
+            return Ok();
         }
 
     }

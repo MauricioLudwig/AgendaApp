@@ -2,10 +2,9 @@
 using AgendaApp.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AgendaApp.Services
 {
@@ -24,7 +23,9 @@ namespace AgendaApp.Services
 
         public IEnumerable<Agenda> GetAll()
         {
-            return context.Agendas.Where(o => o.ApplicationUserId == userId);
+            return context.Agendas
+                .Include(o => o.Items)
+                .Where(o => o.ApplicationUserId == userId);
         }
 
         public void Create(Agenda agenda)
