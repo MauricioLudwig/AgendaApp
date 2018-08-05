@@ -6,7 +6,7 @@
             <div class="col">
                 @Model.Title
                 <br />
-                <small class="form-text">@Model.CreatedAt.ToString("dd MMMM, yyyy")</small>
+                <small class="form-text text-muted">@Model.CreatedAt.ToString("dd MMMM, yyyy")</small>
             </div>
             <div style="margin:auto" class="col text-right">
                 <span><i class="fas fa-cogs fa-lg"></i></span>
@@ -25,12 +25,27 @@
             <p class="lead">@category.Title</p>
             @foreach (var item in category.Items)
             {
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">@item.Description</label>
-                </div>
+                if (item.Completed)
+                {
+                    <div class="form-group form-check">
+                        <input checked type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
+                        <label style="text-decoration:line-through;" class="form-check-label" for="exampleCheck1">@item.Description</label>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
+                        <label class="form-check-label" for="exampleCheck1">@item.Description</label>
+                    </div>
+                }
             }
         }
+
+        <hr />
+        <div>
+            <p class="lead">1 / 3</p>
+        </div>
 
     </div>
 </div>

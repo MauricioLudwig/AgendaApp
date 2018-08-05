@@ -2,15 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AgendaApp.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaApp.Controllers
 {
+
+    [Authorize]
     public class ItemController : Controller
     {
-        public IActionResult Index()
+
+        private AgendaDbContext context;
+
+        public ItemController(AgendaDbContext context)
         {
-            return View();
+            this.context = context;
         }
+
+        [HttpPost]
+        public IActionResult Check(int id)
+        {
+            try
+            {
+                var item = context.Items.Find(id);
+                item.Completed = !item.Completed;
+                context.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Profile");
+            }
+        }
+
     }
 }

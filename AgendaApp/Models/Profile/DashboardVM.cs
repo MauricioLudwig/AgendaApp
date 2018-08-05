@@ -8,6 +8,5 @@ namespace AgendaApp.Models
     public class DashboardVM
     {
         public string Alias { get; set; }
-        public List<DashboardAgendaVM> Agendas { get; set; }
     }
 }

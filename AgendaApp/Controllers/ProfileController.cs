@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AgendaApp.Data;
 using AgendaApp.Data.Entities;
 using AgendaApp.Models;
@@ -39,11 +37,40 @@ namespace AgendaApp.Controllers
         public IActionResult Index()
         {
             var alias = context.Users.Find(userId).Alias;
+            var model = new DashboardVM { Alias = alias };
 
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            var user = context.ApplicationUsers.Find(userId);
+            var model = mapper.Map<EditProfileVM>(user);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditProfileVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = context.ApplicationUsers.Find(userId);
+            user.Alias = model.Alias;
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(ProfileController.Index));
+        }
+
+        [HttpGet]
+        public IActionResult GetAgendas()
+        {
             var agendas = context.Agendas
-                .Include(o => o.Items)
-                .Where(o => o.ApplicationUserId == userId)
-                .ToList();
+               .Include(o => o.Items)
+               .Where(o => o.ApplicationUserId == userId)
+               .ToList();
 
             var agendasVM = new List<DashboardAgendaVM>();
 
@@ -76,35 +103,7 @@ namespace AgendaApp.Controllers
                 agendasVM.Add(agendaVM);
             }
 
-            var model = new DashboardVM
-            {
-                Alias = alias,
-                Agendas = agendasVM
-            };
-
-            return View(model);
-        }
-
-        [HttpGet]
-        public IActionResult Edit()
-        {
-            var user = context.ApplicationUsers.Find(userId);
-            var model = mapper.Map<EditProfileVM>(user);
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(EditProfileVM model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var user = context.ApplicationUsers.Find(userId);
-            user.Alias = model.Alias;
-            context.SaveChanges();
-
-            return RedirectToAction(nameof(ProfileController.Index));
+            return PartialView("_Agendas", agendasVM);
         }
 
     }

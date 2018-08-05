@@ -1,0 +1,6 @@
+﻿@model List<DashboardAgendaVM>
+
+@foreach (var agenda in Model)
+{
+    @await Html.PartialAsync("_Agenda", agenda)
+}

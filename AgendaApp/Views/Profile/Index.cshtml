@@ -1,13 +1,13 @@
-﻿@model  DashboardVM
+﻿@model DashboardVM
 
-@{ 
+@{
     ViewBag.Title = "Dashboard";
 }
 
 <h1>Hello @Model.Alias!</h1>
 <p class="lead">Ready to check off a few items?</p>
+<div id="container"></div>
 
-@foreach (var agenda in Model.Agendas)
-{
-    @await Html.PartialAsync("_Agenda", agenda)
+@section localScript{
+    <script src="~/js/dashboard.js"></script>
 }
