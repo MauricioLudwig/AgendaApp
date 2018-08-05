@@ -6,10 +6,10 @@
             <div class="col">
                 @Model.Title
                 <br />
-                <small class="form-text text-muted">@Model.CreatedAt.ToString("dd MMMM, yyyy")</small>
+                <small class="form-text text-muted">@Model.CreatedAt.ToString("d MMMM, yyyy")</small>
             </div>
             <div style="margin:auto" class="col text-right">
-                <span><i class="fas fa-cogs fa-lg"></i></span>
+                <a asp-controller="Agenda" asp-action="Edit" asp-route-id="@Model.Id" class="gear-icon-link"><i class="fas fa-cogs fa-lg"></i></a>
             </div>
         </div>
     </div>
@@ -17,7 +17,8 @@
 
         @if (Model.Deadline != null)
         {
-            <h5 class="card-title">Deadline: @Model.Deadline</h5>
+            <h5 class="card-title">Deadline: @Model.Deadline.Value.ToString("d MMMM, yyyy")</h5>
+            <hr />
         }
 
         @foreach (var category in Model.Categories.OrderBy(o => o.Title))
@@ -44,7 +45,7 @@
 
         <hr />
         <div>
-            <p class="lead">@String.Format($"{Model.CompletedItemsCount} / {Model.TotalItemsCount}")</p>
+            <p class="lead lead-no-margin">@String.Format($"{Model.CompletedItemsCount} / {Model.TotalItemsCount}")</p>
         </div>
 
     </div>

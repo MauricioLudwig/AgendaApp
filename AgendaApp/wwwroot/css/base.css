@@ -9,3 +9,16 @@
     color: darkred;
     font-size: small
 }
+
+.lead-no-margin {
+    margin: 0;
+}
+
+.gear-icon-link {
+    text-decoration: none;
+    color: dimgray;
+}
+
+.gear-icon-link:hover {
+    color: cadetblue
+}

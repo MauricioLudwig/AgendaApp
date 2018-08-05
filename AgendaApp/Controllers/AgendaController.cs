@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AgendaApp.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaApp.Controllers
@@ -9,9 +10,11 @@ namespace AgendaApp.Controllers
     public class AgendaController : Controller
     {
 
-        public AgendaController()
-        {
+        private AgendaDbContext context;
 
+        public AgendaController(AgendaDbContext context)
+        {
+            this.context = context;
         }
 
         [HttpGet]
@@ -24,6 +27,18 @@ namespace AgendaApp.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Archive(int id)
+        {
+            return Ok();
         }
 
     }
