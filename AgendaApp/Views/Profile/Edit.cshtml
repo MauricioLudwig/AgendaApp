@@ -1,1 +1,31 @@
-﻿<p>Profile - Edit</p>
+﻿@model EditProfileVM
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+<div class="card">
+
+    <div class="card-header text-center">
+        Edit Profile
+    </div>
+
+    <div class="card-body">
+
+        <form asp-controller="Profile" asp-action="Edit" method="post">
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-group">
+                <label asp-for="Alias"></label>
+                <span asp-validation-for="Alias" class="invalidFormSubmission"></span>
+                <input asp-for="Alias" class="form-control" />
+                <small class="form-text text-muted">Max 50 characters allowed.</small>
+            </div>
+
+            <input type="submit" class="btn btn-warning" value="Save" />
+
+        </form>
+
+    </div>
+</div>

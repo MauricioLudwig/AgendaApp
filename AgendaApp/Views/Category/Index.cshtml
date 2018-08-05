@@ -1,35 +1,39 @@
 ﻿@model List<CategoryVM>
 
-@if (Model.Count > 0)
-{
-    <div class="card mb-2">
-        <div class="card-body text-center">
+@{
+    ViewBag.Title = "Category";
+}
+
+<div class="card">
+    <div class="card-body text-center">
+        @if (Model.Count > 0)
+        {
             <p class="lead">Your Categories</p>
+            <p class="card-text">Categories enable you to group common agenda items (e.g. school, work etc). Click a category to edit or remove.</p>
             <div>
                 <span>Want to add another? </span>
-                <a asp-controller="Category" asp-action="Create">Create one now.</a>
-                <p>Click a category to edit or remove.</p>
+                <a asp-controller="Category" asp-action="Create">Create one now</a>
             </div>
-        </div>
+        }
+        else
+        {
+            <p class="lead">Oh no... you have no categories</p>
+            <p class="card-text">Categories enable you to group common agenda items (e.g. school, work etc). Click a category to edit or remove.</p>
+            <div>
+                <a asp-controller="Category" asp-action="Create">Add one now</a>
+            </div>
+        }
     </div>
+</div>
 
-    <div class="list-group">
+@if (Model.Count > 0)
+{
+    <div class="list-group mt-2">
         @foreach (var category in Model)
         {
             <a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" class="list-group-item list-group-item-light list-group-item-action mb-2">
                 <p style="margin-bottom: 0;" class="lead">@category.Title</p>
             </a>
         }
-    </div>
-}
-else
-{
-    <div class="card">
-        <div class="card-body text-center">
-            <p class="lead">Oh no, you have no categories...</p>
-            <div>
-                <a asp-controller="Category" asp-action="Create">Add one now</a>
-            </div>
-        </div>
     </div>
 }

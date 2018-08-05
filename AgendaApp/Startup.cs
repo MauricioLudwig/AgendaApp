@@ -52,11 +52,13 @@ namespace AgendaApp
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CreateCategoryVM, Category>();
+                cfg.CreateMap<ApplicationUser, EditProfileVM>();
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
             // DI for services
+            services.AddScoped<IAgendaService, AgendaService>();
             services.AddScoped<ICategoryService, CategoryService>();
         }
 

@@ -1,1 +1,13 @@
-﻿<p>Profile - Index</p>
+﻿@model  DashboardVM
+
+@{ 
+    ViewBag.Title = "Dashboard";
+}
+
+<h1>Hello @Model.Alias!</h1>
+<p class="lead">Ready to check off a few items?</p>
+
+@foreach (var agenda in Model.Agendas)
+{
+    @await Html.PartialAsync("_Agenda", agenda)
+}

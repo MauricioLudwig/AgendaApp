@@ -1,4 +1,5 @@
 ﻿using AgendaApp.Data.Entities;
+using AgendaApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace AgendaApp.Services
 {
     public interface IAgendaService
     {
+        IEnumerable<Agenda> GetAll();
         void Create(Agenda agenda);
     }
 }

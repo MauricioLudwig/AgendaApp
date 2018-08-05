@@ -1,0 +1,37 @@
+﻿@model List<AgendaVM>
+
+@{
+    ViewBag.Title = "Agenda";
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Index -->
+        <div class="col-lg-6">
+
+            <p class="lead">Your Agenda(s)</p>
+
+        </div>
+
+        <!-- Create -->
+        <div class="col-lg-6">
+
+            <p class="lead">Create Agenda</p>
+
+        </div>
+
+    </div>
+</div>
+
+@section localScript {
+
+    <script>
+
+        $(document).ready(function () {
+            console.log('run');
+        });
+
+    </script>
+
+}

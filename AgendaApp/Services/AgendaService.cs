@@ -22,6 +22,11 @@ namespace AgendaApp.Services
             userId = userManager.GetUserId(user);
         }
 
+        public IEnumerable<Agenda> GetAll()
+        {
+            return context.Agendas.Where(o => o.ApplicationUserId == userId);
+        }
+
         public void Create(Agenda agenda)
         {
             agenda.ApplicationUserId = userId;
