@@ -24,7 +24,6 @@ namespace AgendaApp.Controllers
         public IActionResult Index()
         {
             var alreadySignedIn = signInManager.IsSignedIn(User);
-
             if (alreadySignedIn)
                 return RedirectToAction("Index", "Profile");
 

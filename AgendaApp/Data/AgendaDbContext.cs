@@ -28,6 +28,10 @@ namespace AgendaApp.Data
                 .Property(o => o.Archived)
                 .HasDefaultValue(false);
 
+            builder.Entity<Agenda>()
+                .Property(o => o.Title)
+                .HasDefaultValue("Agenda");
+
             builder.Entity<Item>()
                 .Property(o => o.Completed)
                 .HasDefaultValue(false);

@@ -43,10 +43,17 @@
             }
         }
 
-        <hr />
-        <div>
-            <p class="lead lead-no-margin">@String.Format($"{Model.CompletedItemsCount} / {Model.TotalItemsCount}")</p>
-        </div>
+        @if (Model.TotalItemsCount > 0)
+        {
+            <hr />
+            <div>
+                <p class="lead lead-no-margin">@String.Format($"{Model.CompletedItemsCount} / {Model.TotalItemsCount}")</p>
+            </div>
+        }
+        else
+        {
+            <a asp-controller="Agenda" asp-action="Edit" asp-route-id="@Model.Id">Add items now</a>
+        }
 
     </div>
 </div>

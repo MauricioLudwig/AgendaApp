@@ -39,14 +39,10 @@ namespace AgendaApp.Controllers
         public IActionResult Login(string returnUrl = "")
         {
             var alreadySignedIn = signInManager.IsSignedIn(User);
-
             if (alreadySignedIn)
                 return RedirectToAction("Index", "Profile");
 
-            var model = new LoginVM
-            {
-                ReturnUrl = returnUrl
-            };
+            var model = new LoginVM { ReturnUrl = returnUrl };
 
             return View(model);
         }

@@ -61,7 +61,7 @@ namespace AgendaApp.Controllers
             var category = mapper.Map<Category>(model);
             categoryService.Create(category);
 
-            return RedirectToAction("Index", "Category");
+            return RedirectToAction(nameof(CategoryController.Index));
         }
 
         [HttpGet]

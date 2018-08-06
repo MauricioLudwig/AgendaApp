@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AgendaApp.Data;
+﻿using AgendaApp.Data;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +11,12 @@ namespace AgendaApp.Controllers
     {
 
         private AgendaDbContext context;
+        private IMapper mapper;
 
-        public ItemController(AgendaDbContext context)
+        public ItemController(AgendaDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
 
         [HttpPost]

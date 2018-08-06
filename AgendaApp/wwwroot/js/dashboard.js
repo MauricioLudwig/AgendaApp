@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
 
-    // cached variables
     var container = $('#container');
 
     getAgendas();

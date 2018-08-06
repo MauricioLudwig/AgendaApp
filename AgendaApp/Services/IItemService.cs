@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace AgendaApp.Services
 {
-    public interface IAgendaService
+    public interface IItemService
     {
-        Agenda GetById(int id);
-        IEnumerable<Agenda> GetAll();
-        void Create(Agenda agenda);
+        void Create(CreateItemVM item);
+        IEnumerable<Item> GetAll(int id);
     }
 }

@@ -8,7 +8,6 @@ namespace AgendaApp.Data.Entities
     {
         [Key]
         public int Id { get; set; }
-        [Required]
         [StringLength(256)]
         public string Title { get; set; }
         public DateTime CreatedAt { get; set; }

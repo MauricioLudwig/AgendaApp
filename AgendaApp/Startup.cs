@@ -53,6 +53,10 @@ namespace AgendaApp
             {
                 cfg.CreateMap<CreateCategoryVM, Category>();
                 cfg.CreateMap<ApplicationUser, EditProfileVM>();
+                cfg.CreateMap<Agenda, AgendaVM>()
+                    .ForMember(dest => dest.ItemCount, opt => opt.MapFrom(source => source.Items.Count));
+                cfg.CreateMap<CreateAgendaVM, Agenda>();
+                cfg.CreateMap<CreateItemVM, Item>();
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
