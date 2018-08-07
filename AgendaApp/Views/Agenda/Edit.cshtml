@@ -1,4 +1,6 @@
-﻿@{ 
+﻿@model EditAgendaIndexVM
+
+@{
     ViewBag.Title = "Edit Agenda";
 }
 
@@ -8,12 +10,50 @@
         <!-- Edit Agenda -->
         <div class="col-6">
 
+            <p class="lead lead-no-margin">@Model.Title</p>
+            <div class="card mt-3">
+                <div class="card-body">
+                    This is some text within a card body.
+                </div>
+            </div>
+
+            @await Html.PartialAsync("_Items", Model.Items)
+
         </div>
 
         <!-- Add Items -->
         <div class="col-6">
 
+            <p class="lead lead-no-margin">Create new Item</p>
+            <div class="card mt-3">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="descriptionInput">Description</label>
+                        <input type="text" class="form-control" id="descriptionInput">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categorySelect">Category</label>
+                        <select class="form-control" id="categorySelect">
+                            <option selected>None</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <option>@category</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button id="addItem" class="btn btn-success">Add</button>
+
+                </div>
+            </div>
+
         </div>
 
     </div>
 </div>
+
+@section localScript {
+    <script src="~/js/edit_agenda.js"></script>
+}

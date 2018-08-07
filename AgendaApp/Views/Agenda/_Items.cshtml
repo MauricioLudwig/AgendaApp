@@ -1,0 +1,8 @@
+﻿@model List<ItemVM>
+
+<div class="list-group mt-3">
+    @foreach (var item in Model)
+    {
+        @await Html.PartialAsync("_Item", item)
+    }
+</div>

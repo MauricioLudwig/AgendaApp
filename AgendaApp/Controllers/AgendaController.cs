@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AgendaApp.Data;
 using AgendaApp.Data.Entities;
 using AgendaApp.Models;
@@ -16,12 +17,16 @@ namespace AgendaApp.Controllers
 
         private AgendaDbContext context;
         private IAgendaService agendaService;
+        private ICategoryService categoryService;
+        private IItemService itemService;
         private IMapper mapper;
 
-        public AgendaController(AgendaDbContext context, IAgendaService agendaService, IMapper mapper)
+        public AgendaController(AgendaDbContext context, IAgendaService agendaService, ICategoryService categoryService, IItemService itemService, IMapper mapper)
         {
             this.context = context;
             this.agendaService = agendaService;
+            this.categoryService = categoryService;
+            this.itemService = itemService;
             this.mapper = mapper;
         }
 
@@ -60,8 +65,17 @@ namespace AgendaApp.Controllers
         public IActionResult Edit(int id)
         {
             var agenda = agendaService.GetById(id);
+            var items = itemService.GetAll(agenda.Id);
 
-            return View();
+            var model = new EditAgendaIndexVM
+            {
+                Title = agenda.Title,
+                Deadline = agenda.Deadline,
+                Items = mapper.Map<List<ItemVM>>(items),
+                Categories = categoryService.GetAllValues().ToList()
+            };
+
+            return View(model);
         }
 
         [HttpPost]

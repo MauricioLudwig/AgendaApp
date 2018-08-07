@@ -57,6 +57,7 @@ namespace AgendaApp
                     .ForMember(dest => dest.ItemCount, opt => opt.MapFrom(source => source.Items.Count));
                 cfg.CreateMap<CreateAgendaVM, Agenda>();
                 cfg.CreateMap<CreateItemVM, Item>();
+                cfg.CreateMap<Item, ItemVM>();
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
@@ -64,6 +65,7 @@ namespace AgendaApp
             // DI for services
             services.AddScoped<IAgendaService, AgendaService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IItemService, ItemService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

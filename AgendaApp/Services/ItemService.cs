@@ -28,8 +28,12 @@ namespace AgendaApp.Services
 
         public void Create(CreateItemVM item)
         {
+            var mappedItem = mapper.Map<Item>(item);
+            mappedItem.CreatedAt = DateTime.Now;
+
             var agenda = context.Agendas.Find(item.AgendaId);
-            agenda.Items.Add(mapper.Map<Item>(item));
+            agenda.Items.Add(mappedItem);
+
             context.SaveChanges();
         }
 

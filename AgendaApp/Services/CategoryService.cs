@@ -32,6 +32,14 @@ namespace AgendaApp.Services
             return categories;
         }
 
+        public IEnumerable<string> GetAllValues()
+        {
+            return context.Categories
+                .Where(o => o.ApplicationUserId == userId)
+                .Select(o => o.Title)
+                .OrderBy(o => o);
+        }
+
         public Category GetById(int id)
         {
             var category = context.Categories.Find(id);
