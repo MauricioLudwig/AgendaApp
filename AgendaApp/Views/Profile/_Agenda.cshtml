@@ -2,15 +2,12 @@
 
 <div class="card bg-light mt-3">
     <div class="card-header">
-        <div class="row">
-            <div class="col">
-                @Model.Title
-                <br />
+        <div class="agenda-card-header">
+            <div>
+                <h3>@Model.Title</h3>
                 <small class="form-text text-muted">Created @Model.CreatedAt.ToString("d MMMM, yyyy")</small>
             </div>
-            <div style="margin:auto" class="col text-right">
-                <a asp-controller="Agenda" asp-action="Edit" asp-route-id="@Model.Id" class="gear-icon-link"><i class="fas fa-cogs fa-lg"></i></a>
-            </div>
+            <a asp-controller="Agenda" asp-action="Edit" asp-route-id="@Model.Id" class="gear-icon-link"><i class="fas fa-cogs fa-lg"></i></a>
         </div>
     </div>
     <div class="card-body">
@@ -31,14 +28,14 @@
             {
                 if (item.Completed)
                 {
-                    <div class="form-group form-check">
+                    <div class="form-group form-check item-checkbox-container">
                         <input checked type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
                         <label style="text-decoration:line-through;" class="form-check-label checked-item">@item.Description</label>
                     </div>
                 }
                 else
                 {
-                    <div class="form-group form-check">
+                    <div class="form-group form-check item-checkbox-container">
                         <input type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
                         <label class="form-check-label">@item.Description</label>
                     </div>
@@ -49,8 +46,9 @@
         @if (Model.TotalItemsCount > 0)
         {
             <hr />
-            <div>
+            <div class="agenda-card-footer">
                 <p class="lead lead-no-margin">@String.Format($"{Model.CompletedItemsCount} / {Model.TotalItemsCount}")</p>
+                <a asp-controller="Agenda" asp-action="Archive" asp-route-id="@Model.Id" role="button" class="btn btn-outline-warning">Archive</a>
             </div>
         }
         else

@@ -1,0 +1,20 @@
+﻿.agenda-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agenda-card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-banner {
+    background: #f1f1f1;
+    color: black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

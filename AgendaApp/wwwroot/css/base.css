@@ -23,20 +23,9 @@
     color: cadetblue
 }
 
-.agenda-list-item {
-
-}
-
 .validation-summary ul {
     padding: 5px;
     list-style-type: none;
     color: darkred;
     text-align: center;
-}
-
-.dashboard-banner {
-    background: #f1f1f1;
-    color: black;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
 }

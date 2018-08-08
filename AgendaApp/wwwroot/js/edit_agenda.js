@@ -14,6 +14,23 @@
         postNewItem(id);
     });
 
+    $(document).on('click', '.removeItem', function () {
+
+        var id = $(this).prop('id');
+
+        $.ajax({
+            url: '/Item/Delete/' + id,
+            type: 'POST',
+            success: function (result) {
+                getAgendaItems();
+            },
+            error: function () {
+                alert('Something went wrong');
+            }
+        });
+
+    });
+
     function postNewItem(id) {
 
         var data = {};

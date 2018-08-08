@@ -1,5 +1,6 @@
 ﻿using AgendaApp.Data.Entities;
 using AgendaApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -112,6 +113,12 @@ namespace AgendaApp.Controllers
             return View();
         }
         #endregion
+
+        [Authorize]
+        public IActionResult Error()
+        {
+            return View();
+        }
 
     }
 }

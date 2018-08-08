@@ -10,6 +10,7 @@ namespace AgendaApp.Services
     public interface IItemService
     {
         void Create(CreateItemVM item);
+        void Delete(int id);
         IEnumerable<Item> GetAll(int id);
     }
 }

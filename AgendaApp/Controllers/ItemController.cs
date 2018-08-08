@@ -39,5 +39,12 @@ namespace AgendaApp.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            itemService.Delete(id);
+            return Ok();
+        }
+
     }
 }

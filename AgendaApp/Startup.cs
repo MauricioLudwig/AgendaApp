@@ -79,6 +79,7 @@ namespace AgendaApp
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithReExecute("/Home/Error");
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
