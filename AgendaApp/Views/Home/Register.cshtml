@@ -1,16 +1,16 @@
-﻿@model LoginVM
+﻿@model RegisterVM
 
 @{
-    ViewBag.Title = "Agenda";
+    ViewBag.Title = "Sign up";
 }
 
 <div class="home-page-layout">
     <div class="home-page-box">
 
-        <h1>Agenda</h1>
-        <p class="lead">Get your life under control</p>
+        <h1>Sign up</h1>
+        <p class="lead">No hassle. No fees.</p>
 
-        <form asp-controller="Home" asp-action="Index" method="post">
+        <form asp-controller="Home" asp-action="Register" method="post">
 
             <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
 
@@ -21,22 +21,24 @@
             </div>
 
             <div class="form-group text-left">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="invalidFormSubmission"></span>
+            </div>
+
+            <div class="form-group text-left">
                 <label asp-for="Password"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="invalidFormSubmission"></span>
+                <small class="form-text text-muted">Must be at least 6 characters and include at least 1 digit.</small>
             </div>
 
-            <div class="form-group form-check">
-                <input asp-for="RememberMe" class="form-check-input">
-                <label asp-for="RememberMe"></label>
-            </div>
-
-            <input type="submit" class="btn btn-success" value="Sign in" />
+            <input type="submit" class="btn btn-primary" value="Sign up" />
 
         </form>
 
         <hr />
-        <a asp-controller="Home" asp-action="Register">Create Account</a>
+        <a asp-controller="Home" asp-action="Index">Sign in</a>
 
     </div>
 </div>
