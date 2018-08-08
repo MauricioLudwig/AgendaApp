@@ -4,28 +4,36 @@
     ViewBag.Title = "Edit Profile";
 }
 
-<div class="card">
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
 
-    <div class="card-header text-center">
-        Edit Profile
-    </div>
+            <div class="card">
 
-    <div class="card-body">
+                <div class="card-header text-center">
+                    Edit Profile
+                </div>
 
-        <form asp-controller="Profile" asp-action="Edit" method="post">
+                <div class="card-body">
 
-            <div asp-validation-summary="ModelOnly"></div>
+                    <form asp-controller="Profile" asp-action="Edit" method="post">
 
-            <div class="form-group">
-                <label asp-for="Alias"></label>
-                <span asp-validation-for="Alias" class="invalidFormSubmission"></span>
-                <input asp-for="Alias" class="form-control" />
-                <small class="form-text text-muted">Max 50 characters allowed.</small>
+                        <div asp-validation-summary="ModelOnly"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Alias"></label>
+                            <span asp-validation-for="Alias" class="invalidFormSubmission"></span>
+                            <input asp-for="Alias" class="form-control" />
+                            <small class="form-text text-muted">Max 50 characters allowed.</small>
+                        </div>
+
+                        <input type="submit" class="btn btn-warning" value="Save" />
+
+                    </form>
+
+                </div>
             </div>
 
-            <input type="submit" class="btn btn-warning" value="Save" />
-
-        </form>
-
+        </div>
     </div>
 </div>

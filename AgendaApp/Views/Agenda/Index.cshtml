@@ -2,40 +2,39 @@
     ViewBag.Title = "Agenda";
 }
 
-<div class="">
+<div class="container-fluid mt-5">
     <div class="row">
+        <div class="col-lg-6 offset-lg-3">
 
-        <div class="col-lg-6">
-            <p class="lead">Your Agendas</p>
-            <div id="agendaContainer"></div>
-        </div>
+            <div class="row">
 
-        <div class="col-lg-6">
-
-            <p class="lead">Create Agenda</p>
-
-            <div class="card">
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label for="titleInput">Title</label>
-                        <input type="text" class="form-control" id="titleInput">
-                        <small class="form-text text-muted">Max 100 characters allowed. This field is optional</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="dateInput">Deadline</label>
-                        <input type="date" class="form-control" id="dateInput">
-                        <small class="form-text text-muted">This field is optional</small>
-                    </div>
-
-                    <button id="addAgendaBtn" class="btn btn-success">Add</button>
-
+                <div class="col-lg-6">
+                    <p class="lead">Your Agendas</p>
+                    <div id="agenda-container"></div>
                 </div>
+
+                <div class="col-lg-6">
+                    <p class="lead">Create Agenda</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="titleInput">Title</label>
+                                <input type="text" class="form-control" id="titleInput">
+                                <small class="form-text text-muted">Max 100 characters allowed. This field is optional</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateInput">Deadline</label>
+                                <input type="date" class="form-control" id="dateInput">
+                                <small class="form-text text-muted">This field is optional</small>
+                            </div>
+                            <button id="addAgendaBtn" class="btn btn-success">Add</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
-
     </div>
 </div>
 

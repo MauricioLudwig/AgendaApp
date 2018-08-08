@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    var agendaContainer = $('#agendaContainer');
+    var agendaContainer = $('#agenda-container');
 
     var titleInput = $('#titleInput');
     var dateInput = $('#dateInput');
@@ -16,7 +16,7 @@
                 agendaContainer.html(result);
             },
             error: function () {
-                agendaContainer.html('');
+                agendaContainer.empty();
                 alert('Something went wrong.');
             }
         });
@@ -26,7 +26,7 @@
 
         var data = {};
         data.title = titleInput.val();
-        data.dateInput = dateInput.val();
+        data.deadline = dateInput.val();
 
         $.ajax({
             url: 'Agenda/Create',

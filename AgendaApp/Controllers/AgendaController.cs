@@ -41,7 +41,7 @@ namespace AgendaApp.Controllers
         {
             var model = agendaService.GetAll()
                 .Select(o => mapper.Map<AgendaVM>(o))
-                .OrderByDescending(o => o.CreatedAt)
+                .OrderBy(o => o.Title)
                 .ToList();
 
             return PartialView("_Agendas", model);
