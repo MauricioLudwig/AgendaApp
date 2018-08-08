@@ -1,12 +1,12 @@
 ﻿@model DashboardAgendaVM
 
-<div class="card bg-lightte mb-3">
+<div class="card bg-light mt-3">
     <div class="card-header">
         <div class="row">
             <div class="col">
                 @Model.Title
                 <br />
-                <small class="form-text text-muted">@Model.CreatedAt.ToString("d MMMM, yyyy")</small>
+                <small class="form-text text-muted">Created @Model.CreatedAt.ToString("d MMMM, yyyy")</small>
             </div>
             <div style="margin:auto" class="col text-right">
                 <a asp-controller="Agenda" asp-action="Edit" asp-route-id="@Model.Id" class="gear-icon-link"><i class="fas fa-cogs fa-lg"></i></a>
@@ -17,7 +17,7 @@
 
         @if (Model.Deadline.HasValue)
         {
-            <h5 class="card-title">Deadline: @Model.Deadline.Value.ToString("d MMMM, yyyy")</h5>
+            <h6 class="card-title"><span><i class="far fa-clock"></i></span> @Model.Deadline.Value.ToString("d MMMM, yyyy")</h6>
             <hr />
         }
 
@@ -33,14 +33,14 @@
                 {
                     <div class="form-group form-check">
                         <input checked type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
-                        <label style="text-decoration:line-through;" class="form-check-label checked-item" for="exampleCheck1">@item.Description</label>
+                        <label style="text-decoration:line-through;" class="form-check-label checked-item">@item.Description</label>
                     </div>
                 }
                 else
                 {
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
-                        <label class="form-check-label" for="exampleCheck1">@item.Description</label>
+                        <label class="form-check-label">@item.Description</label>
                     </div>
                 }
             }

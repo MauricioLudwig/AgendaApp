@@ -4,8 +4,6 @@ using AgendaApp.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace AgendaApp.Controllers
 {

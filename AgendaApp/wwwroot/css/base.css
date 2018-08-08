@@ -32,3 +32,10 @@
     list-style-type: none;
     color: darkred;
 }
+
+.dashboard-banner {
+    background: #f1f1f1;
+    color: black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

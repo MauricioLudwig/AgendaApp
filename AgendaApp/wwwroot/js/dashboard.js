@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    var container = $('#container');
+    var dashboardContainer = $('#dashboard-container');
 
     getAgendas();
 
@@ -9,11 +9,11 @@
             url: 'Profile/GetAgendas',
             type: 'GET',
             success: function (result) {
-                container.html(result);
+                dashboardContainer.html(result);
             },
             error: function () {
-                container.html('');
-                alert('Something went wrong.');
+                dashboardContainer.empty();
+                alert('Something went wrong');
             }
         });
     }
@@ -31,7 +31,7 @@
                 getAgendas();
             },
             error: function () {
-                alert('Something went wrong.');
+                alert('Something went wrong');
             }
         });
     }

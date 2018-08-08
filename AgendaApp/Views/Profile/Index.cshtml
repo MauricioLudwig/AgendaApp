@@ -1,12 +1,22 @@
 ﻿@model DashboardVM
 
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Home";
 }
 
-<h1 class="display-4">Hello @Model.Alias!</h1>
-<p class="lead">Ready to get your life under control?</p>
-<div id="container"></div>
+<div class="container-fluid">
+    <div class="row dashboard-banner">
+        <div class="col-lg-6 offset-lg-3">
+            <h1 class="display-4">Hello @Model.Alias!</h1>
+            <p class="lead lead-no-margin">Ready to get your life under control?</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div id="dashboard-container"></div>
+        </div>
+    </div>
+</div>
 
 @section localScript{
     <script src="~/js/dashboard.js"></script>
