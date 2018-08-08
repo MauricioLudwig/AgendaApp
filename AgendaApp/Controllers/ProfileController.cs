@@ -71,7 +71,7 @@ namespace AgendaApp.Controllers
         {
             var model = new List<DashboardAgendaVM>();
 
-            var agendas = agendaService.GetAll();
+            var agendas = agendaService.GetAllOpen();
             foreach (var agenda in agendas)
             {
                 var agendaVM = new DashboardAgendaVM

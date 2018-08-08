@@ -39,7 +39,7 @@ namespace AgendaApp.Controllers
         [HttpGet]
         public IActionResult GetUserAgendas()
         {
-            var model = agendaService.GetAll()
+            var model = agendaService.GetAllOpen()
                 .Select(o => mapper.Map<AgendaVM>(o))
                 .OrderBy(o => o.Title)
                 .ToList();
@@ -102,10 +102,11 @@ namespace AgendaApp.Controllers
             return PartialView("_Items", model);
         }
 
-        [HttpPost]
-        public IActionResult Agenda(int id)
+        [HttpGet]
+        public IActionResult Archive(int id)
         {
-            return Ok();
+            agendaService.AddToArchive(id);
+            return RedirectToAction("Index", "Profile");
         }
 
     }

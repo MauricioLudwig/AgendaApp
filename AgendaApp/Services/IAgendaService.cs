@@ -11,7 +11,9 @@ namespace AgendaApp.Services
     {
         Agenda GetById(int id);
         IEnumerable<Agenda> GetAll();
+        IEnumerable<Agenda> GetAllOpen();
         void Create(Agenda agenda);
         void Remove(int id);
+        void AddToArchive(int id);
     }
 }
