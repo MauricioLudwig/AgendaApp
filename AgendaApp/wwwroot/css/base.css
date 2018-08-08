@@ -26,3 +26,9 @@
 .agenda-list-item {
 
 }
+
+.validation-summary ul {
+    padding: 5px;
+    list-style-type: none;
+    color: darkred;
+}

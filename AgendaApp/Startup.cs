@@ -48,6 +48,9 @@ namespace AgendaApp
                 options.Password.RequireNonAlphanumeric = false;
             });
 
+            // Change default cookie settings
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Home/Index");
+
             // AutoMapper
             var config = new MapperConfiguration(cfg =>
             {

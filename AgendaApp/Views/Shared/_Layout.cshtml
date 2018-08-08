@@ -20,15 +20,9 @@
 
     @await Html.PartialAsync("_Navbar")
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                @RenderBody()
-            </div>
-        </div>
-    </div>
+    @RenderBody()
 
-    @await  Html.PartialAsync("_Footer")
+    @await Html.PartialAsync("_Footer")
 
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"

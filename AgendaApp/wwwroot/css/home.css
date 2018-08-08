@@ -1,0 +1,22 @@
+﻿.home-page-layout {
+    background: url(../img/background-image.jpeg);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page-box {
+    background: white;
+    opacity: 0.85;
+    border-radius: 3px;
+    width: 25rem;
+    text-align: center;
+    padding: 3rem;
+}
+
+.text-left {
+    text-align: left;
+}

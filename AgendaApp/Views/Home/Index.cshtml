@@ -1,6 +1,46 @@
-﻿<p>Home - Index</p>
+﻿@model LoginVM
 
-<div>
-    <a asp-controller="Account" asp-action="Login">Sign in</a>
-    <a asp-controller="Account" asp-action="Register">Create Account</a>
+@{
+    ViewBag.Title = "Agenda";
+}
+
+@section localStyle {
+    <link href="~/css/home.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="home-page-layout">
+    <div class="home-page-box">
+
+        <h1>Agenda</h1>
+        <p class="lead">Get your life under control</p>
+
+        <form asp-controller="Home" asp-action="Index" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            <div class="form-group text-left">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="invalidFormSubmission"></span>
+            </div>
+
+            <div class="form-group text-left">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="invalidFormSubmission"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input asp-for="RememberMe" class="form-check-input">
+                <label asp-for="RememberMe"></label>
+            </div>
+
+            <input type="submit" class="btn btn-success" value="Sign in" />
+
+        </form>
+
+        <hr />
+        <a asp-controller="Account" asp-action="Register">Create Account</a>
+
+    </div>
 </div>

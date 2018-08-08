@@ -36,61 +36,6 @@ namespace AgendaApp.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Login(string returnUrl = "")
-        {
-            var alreadySignedIn = signInManager.IsSignedIn(User);
-            if (alreadySignedIn)
-                return RedirectToAction("Index", "Profile");
-
-            var model = new LoginVM { ReturnUrl = returnUrl };
-
-            return View(model);
-        }
-
-        [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginVM model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var userNameExists = await userManager.FindByNameAsync(model.UserName);
-            var emailExists = await userManager.FindByEmailAsync(model.UserName);
-
-            // check username and password sign-in
-            if (userNameExists != null)
-            {
-                var result = await signInManager.PasswordSignInAsync(userNameExists, model.Password, model.RememberMe, false);
-
-                if (result.Succeeded)
-                {
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-                        return Redirect(model.ReturnUrl);
-                    else
-                        return RedirectToAction("Index", "Profile");
-                }
-            }
-
-            // Check email and password sign-in
-            if (emailExists != null)
-            {
-                var result = await signInManager.PasswordSignInAsync(emailExists, model.Password, model.RememberMe, false);
-                
-                if (result.Succeeded)
-                {
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-                        return Redirect(model.ReturnUrl);
-                    else
-                        return RedirectToAction("Index", "Profile");
-                }
-            }
-
-            ModelState.AddModelError("", "Incorrect username or password");
-            return View(model);
-        }
-
-        [AllowAnonymous]
-        [HttpGet]
         public IActionResult Register()
         {
             var alreadySignedIn = signInManager.IsSignedIn(User);
