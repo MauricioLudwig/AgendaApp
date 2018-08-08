@@ -31,9 +31,7 @@ namespace AgendaApp.Services
             var mappedItem = mapper.Map<Item>(item);
             mappedItem.CreatedAt = DateTime.Now;
 
-            var agenda = context.Agendas.Find(item.AgendaId);
-            agenda.Items.Add(mappedItem);
-
+            context.Items.Add(mappedItem);
             context.SaveChanges();
         }
 

@@ -22,7 +22,7 @@ namespace AgendaApp.Controllers
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signInManager;
         private IMapper mapper;
-        private string userId { get; set; }
+        private string userId;
 
         public AccountController(AgendaDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {

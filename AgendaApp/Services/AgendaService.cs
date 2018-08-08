@@ -42,5 +42,12 @@ namespace AgendaApp.Services
             context.SaveChanges();
         }
 
+        public void Remove(int id)
+        {
+            var agenda = context.Agendas.Find(id);
+            context.Agendas.Remove(agenda);
+            context.SaveChanges();
+        }
+
     }
 }

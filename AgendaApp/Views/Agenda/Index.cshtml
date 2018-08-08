@@ -2,31 +2,27 @@
     ViewBag.Title = "Agenda";
 }
 
-<div class="container-fluid">
+<div class="">
     <div class="row">
 
-        <!-- List of Agendas -->
-        <div class="col-6">
+        <div class="col-lg-6">
             <p class="lead">Your Agendas</p>
             <div id="agendaContainer"></div>
         </div>
 
-        <!-- Create Agenda Form -->
-        <div class="col-6">
+        <div class="col-lg-6">
 
             <p class="lead">Create Agenda</p>
 
             <div class="card">
                 <div class="card-body">
 
-                    <!-- Title -->
                     <div class="form-group">
                         <label for="titleInput">Title</label>
                         <input type="text" class="form-control" id="titleInput">
                         <small class="form-text text-muted">Max 100 characters allowed. This field is optional</small>
                     </div>
 
-                    <!-- Deadline -->
                     <div class="form-group">
                         <label for="dateInput">Deadline</label>
                         <input type="date" class="form-control" id="dateInput">

@@ -1,6 +1,6 @@
 ﻿@model DashboardAgendaVM
 
-<div class="card bg-light mb-3">
+<div class="card bg-lightte mb-3">
     <div class="card-header">
         <div class="row">
             <div class="col">
@@ -15,7 +15,7 @@
     </div>
     <div class="card-body">
 
-        @if (Model.Deadline != null)
+        @if (Model.Deadline.HasValue)
         {
             <h5 class="card-title">Deadline: @Model.Deadline.Value.ToString("d MMMM, yyyy")</h5>
             <hr />
@@ -23,14 +23,17 @@
 
         @foreach (var category in Model.Categories.OrderBy(o => o.Title))
         {
-            <p class="lead">@category.Title</p>
+            @if (!String.Equals(category.Title, "None"))
+            {
+                <p class="lead">@category.Title</p>
+            }
             @foreach (var item in category.Items)
             {
                 if (item.Completed)
                 {
                     <div class="form-group form-check">
                         <input checked type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
-                        <label style="text-decoration:line-through;" class="form-check-label" for="exampleCheck1">@item.Description</label>
+                        <label style="text-decoration:line-through;" class="form-check-label checked-item" for="exampleCheck1">@item.Description</label>
                     </div>
                 }
                 else

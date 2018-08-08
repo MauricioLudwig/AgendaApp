@@ -65,13 +65,12 @@ namespace AgendaApp.Controllers
         public IActionResult Edit(int id)
         {
             var agenda = agendaService.GetById(id);
-            var items = itemService.GetAll(agenda.Id);
 
             var model = new EditAgendaIndexVM
             {
+                Id = agenda.Id,
                 Title = agenda.Title,
                 Deadline = agenda.Deadline,
-                Items = mapper.Map<List<ItemVM>>(items),
                 Categories = categoryService.GetAllValues().ToList()
             };
 
@@ -79,9 +78,28 @@ namespace AgendaApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit()
+        public IActionResult Edit(EditAgendaIndexVM model)
         {
-            return View();
+            var agenda = context.Agendas.Find(model.Id);
+            agenda.Title = model.Title;
+            agenda.Deadline = model.Deadline;
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(AgendaController.Edit), model.Id);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            agendaService.Remove(id);
+            return RedirectToAction(nameof(AgendaController.Index));
+        }
+
+        [HttpPost]
+        public IActionResult GetItems(int id)
+        {
+            var model = mapper.Map<List<ItemVM>>(itemService.GetAll(id));
+            return PartialView("_Items", model);
         }
 
         [HttpPost]

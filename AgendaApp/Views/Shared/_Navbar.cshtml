@@ -4,29 +4,18 @@
 
 @if (signInManager.IsSignedIn(User))
 {
-    <div class="container-fluid mb-3">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1">
-
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" asp-controller="Agenda" asp-action="Index">Agenda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Category" asp-action="Index">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Profile" asp-action="Index">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Profile" asp-action="Edit">Edit Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Account" asp-action="Logout">Sign out</a>
-                    </li>
-                </ul>
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+        <a class="navbar-brand" asp-controller="Profile" asp-action="Index">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" asp-controller="Agenda" asp-action="Index">Agenda</a>
+                <a class="nav-item nav-link" asp-controller="Category" asp-action="Index">Category</a>
+                <a class="nav-item nav-link" asp-controller="Profile" asp-action="Edit">Profile</a>
+                <a class="nav-item nav-link" asp-controller="Account" asp-action="Logout">Sign out</a>
             </div>
         </div>
-    </div>
+    </nav>
 }
