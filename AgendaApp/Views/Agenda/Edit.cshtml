@@ -12,21 +12,20 @@
                 <!-- Edit Agenda -->
                 <div class="col-lg-6">
 
-                    <p class="lead lead-no-margin">@Model.Title</p>
+                    <p class="lead lead-no-margin">Edit Agenda</p>
                     <div class="card mt-3">
                         <div class="card-body">
 
                             <form asp-controller="Agenda" asp-action="Edit" method="post">
 
                                 <div class="form-group">
-                                    <label for="agendaTitleInput">Title</label>
+                                    <label>Title</label>
                                     <input asp-for="Title" class="form-control" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="dateInput">Deadline</label>
-                                    <input type="date" name="deadline" class="form-control" id="dateInput">
-                                    <small class="form-text text-muted">@(Model.Deadline.HasValue ? "Current: " + Model.Deadline.Value.ToString("dd MMMM, yyyy") : "Not set")</small>
+                                    <label>Deadline</label>
+                                    <input asp-for="Deadline" class="form-control">
                                 </div>
 
                                 <input type="submit" class="btn btn-outline-warning" value="Save" />
