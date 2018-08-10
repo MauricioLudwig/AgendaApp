@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace AgendaApp
 {
@@ -61,6 +62,11 @@ namespace AgendaApp
                 cfg.CreateMap<CreateAgendaVM, Agenda>();
                 cfg.CreateMap<CreateItemVM, Item>();
                 cfg.CreateMap<Item, ItemVM>();
+                cfg.CreateMap<Agenda, ArchivesVM>()
+                    .ForMember(dest => dest.CompletedItemsCount, opt => opt.MapFrom(source => source.Items.Where(o => o.Completed).Count()))
+                    .ForMember(dest => dest.TotalItemsCount, opt => opt.MapFrom(source => source.Items.Count()))
+                    .ForMember(dest => dest.Ratio, opt => opt.MapFrom(source =>
+                        (source.Items.Where(o => o.Completed).Count() / source.Items.Count()) * 100));
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);

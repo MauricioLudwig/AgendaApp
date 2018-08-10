@@ -13,6 +13,7 @@ namespace AgendaApp.Data.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime? Deadline { get; set; }
         public bool Archived { get; set; }
+        public DateTime? ArchivedDate { get; set; }
 
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

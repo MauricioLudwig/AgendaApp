@@ -41,6 +41,13 @@ namespace AgendaApp.Services
                 .Where(o => o.ApplicationUserId == userId && o.Archived == false);
         }
 
+        public IEnumerable<Agenda> GetAllArchived()
+        {
+            return context.Agendas
+                .Include(o => o.Items)
+                .Where(o => o.ApplicationUserId == userId && o.Archived == true);
+        }
+
         public void Create(Agenda agenda)
         {
             agenda.ApplicationUserId = userId;
@@ -60,6 +67,7 @@ namespace AgendaApp.Services
         {
             var agenda = context.Agendas.Find(id);
             agenda.Archived = true;
+            agenda.ArchivedDate = DateTime.Now;
             context.SaveChanges();
         }
 

@@ -1,1 +1,32 @@
-﻿<p>Archives</p>
+﻿@model List<ArchivesVM>
+
+@{
+    ViewBag.Title = "Archives";
+}
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+
+            <ul class="list-group">
+                @foreach (var archive in Model)
+                {
+                    <li class="list-group-item list-group-item-warning list-group-item-action agenda-card-header mb-1">
+                        <div>
+                            <h3>@archive.Title</h3>
+                            <small>
+                                Created: @archive.CreatedAt.Value.ToString("d MMMM, yyyy")
+                            </small>
+                            <br />
+                            <small>
+                                Archived: @archive.ArchivedDate.Value.ToString("d MMMM, yyyy")
+                            </small>
+                        </div>
+                        <p class="lead lead-no-margin">@String.Format($"{archive.CompletedItemsCount}/{archive.TotalItemsCount} ({archive.Ratio} %)")</p>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+</div>
