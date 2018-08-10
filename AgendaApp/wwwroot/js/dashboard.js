@@ -1,23 +1,17 @@
 ﻿$(document).ready(function () {
 
     var dashboardContainer = $('#dashboard-container');
-    var ajaxLoader = $('.ajax-loader');
 
     getAgendas();
 
     function getAgendas() {
-
-        ajaxLoader.show();
-
         $.ajax({
             url: 'Profile/GetAgendas',
             type: 'GET',
             success: function (result) {
-                ajaxLoader.hide();
                 dashboardContainer.html(result);
             },
             error: function () {
-                ajaxLoader.hide();
                 dashboardContainer.empty();
                 alert('Something went wrong');
             }

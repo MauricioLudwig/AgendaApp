@@ -38,14 +38,16 @@ namespace AgendaApp.Services
         {
             return context.Agendas
                 .Include(o => o.Items)
-                .Where(o => o.ApplicationUserId == userId && o.Archived == false);
+                .Where(o => o.ApplicationUserId == userId && o.Archived == false)
+                .OrderBy(o => o.CreatedAt);
         }
 
         public IEnumerable<Agenda> GetAllArchived()
         {
             return context.Agendas
                 .Include(o => o.Items)
-                .Where(o => o.ApplicationUserId == userId && o.Archived == true);
+                .Where(o => o.ApplicationUserId == userId && o.Archived == true)
+                .OrderBy(o => o.ArchivedDate);
         }
 
         public void Create(Agenda agenda)
