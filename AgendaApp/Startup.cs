@@ -52,33 +52,13 @@ namespace AgendaApp
             // Change default login path
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Home/Index");
 
-            // AutoMapper
-            var config = new MapperConfiguration(cfg =>
-            {
-                // ApplicationUser
-                cfg.CreateMap<ApplicationUser, EditProfileVM>();
-                // Agenda
-                cfg.CreateMap<Agenda, AgendaVM>()
-                    .ForMember(dest => dest.ItemCount, opt => opt.MapFrom(source => source.Items.Count));
-                cfg.CreateMap<Agenda, ArchivesVM>()
-                    .ForMember(dest => dest.CompletedItemsCount, opt => opt.MapFrom(source => source.Items.Where(o => o.Completed).Count()))
-                    .ForMember(dest => dest.TotalItemsCount, opt => opt.MapFrom(source => source.Items.Count()))
-                    .ForMember(dest => dest.Ratio, opt => opt.MapFrom(source =>
-                        ((double)source.Items.Where(o => o.Completed).Count() / (double)source.Items.Count()) * 100));
-                cfg.CreateMap<CreateAgendaVM, Agenda>();
-                // Category
-                cfg.CreateMap<CreateCategoryVM, Category>();
-                // Item
-                cfg.CreateMap<Item, ItemVM>();
-                cfg.CreateMap<CreateItemVM, Item>();
-            });
-            var mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
-
             // DI for services
             services.AddScoped<IAgendaService, AgendaService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IItemService, ItemService>();
+
+            // Enable AutoMapper
+            services.AddAutoMapper();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
