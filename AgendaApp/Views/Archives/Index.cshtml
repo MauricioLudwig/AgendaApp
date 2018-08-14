@@ -14,8 +14,12 @@
                     <li class="list-group-item list-group-item-action agenda-card-header mb-3">
                         <div>
                             <h4>@archive.Title</h4>
-                            <small>
-                                <span style="font-weight: bold;">Created</span>: @archive.CreatedAt.Value.ToString("d MMMM, yyyy"). <span style="font-weight:bold;">Archived</span>: @archive.ArchivedDate.Value.ToString("d MMMM, yyyy")
+                            <small class="text-muted">
+                                <span style="font-weight: bold;">Created</span>: @archive.CreatedAt.Value.ToString("d MMMM, yyyy")
+                            </small>
+                            <br />
+                            <small class="text-muted">
+                                <span style="font-weight:bold;">Archived</span>: @archive.ArchivedDate.Value.ToString("d MMMM, yyyy")
                             </small>
                         </div>
                         <div>
