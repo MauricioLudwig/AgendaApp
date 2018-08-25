@@ -11,9 +11,9 @@
             success: function (result) {
                 dashboardContainer.html(result);
             },
-            error: function () {
+            error: function (exception) {
                 dashboardContainer.empty();
-                alert('Something went wrong');
+                alert(exception);
             }
         });
     }
@@ -27,11 +27,11 @@
         $.ajax({
             url: 'Item/Check/' + id,
             type: 'POST',
-            success: function (result) {
+            success: function () {
                 getAgendas();
             },
-            error: function () {
-                alert('Something went wrong');
+            error: function (exception) {
+                alert(exception);
             }
         });
     }

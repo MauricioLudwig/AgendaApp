@@ -20,6 +20,7 @@
 
                                 <div class="form-group">
                                     <label>Title</label>
+                                    <span asp-validation-for="Title" class="invalidFormSubmission"></span>
                                     <input asp-for="Title" class="form-control" />
                                 </div>
 
@@ -39,7 +40,7 @@
                     <br />
                     <p class="lead">Agenda Items</p>
                     <hr />
-                    <p class="font-weight-light">Click an item to delete it</p>
+                    <p class="font-weight-light">Click an item to delete</p>
                     <div id="@Model.Id" class="itemsContainer"></div>
 
                 </div>
@@ -54,6 +55,7 @@
                             <div class="form-group">
                                 <label for="descriptionInput">Description</label>
                                 <input type="text" class="form-control" id="descriptionInput">
+                                <small class="form-text text-muted">This field is required.</small>
                             </div>
 
                             <div class="form-group">
@@ -80,5 +82,5 @@
 </div>
 
 @section localScript {
-    <script src="~/js/edit_agenda.js"></script>
+    <script src="~/js/editAgenda.js"></script>
 }

@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
 
     var itemsContainer = $('.itemsContainer');
+
     var agendaId = itemsContainer.prop('id');
     var descriptionInput = $('#descriptionInput');
     var categorySelect = $('#categorySelect');
@@ -10,7 +11,6 @@
 
     addItem.on('click', function () {
         var id = $(this).prop('id');
-        console.log(id);
         postNewItem(id);
     });
 
@@ -21,11 +21,11 @@
         $.ajax({
             url: '/Item/Delete/' + id,
             type: 'POST',
-            success: function (result) {
+            success: function () {
                 getAgendaItems();
             },
-            error: function () {
-                alert('Something went wrong');
+            error: function (exception) {
+                alert(exception);
             }
         });
 
@@ -42,11 +42,11 @@
             url: '/Item/Create',
             type: 'POST',
             data: { 'model': data },
-            success: function (res) {
+            success: function () {
                 getAgendaItems();
             },
-            error: function () {
-
+            error: function (exception) {
+                alert(exception);
             }
         });
 

@@ -12,19 +12,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <!-- Local CSS -->
-    <link href="~/css/base.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/home.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/dashboard.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/item.css" rel="stylesheet" type="text/css" />
-    @RenderSection("localStyle", false)
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 </head>
 <body>
 
     @await Html.PartialAsync("_Navbar")
-
     @RenderBody()
-
-    @await Html.PartialAsync("_Footer")
 
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"

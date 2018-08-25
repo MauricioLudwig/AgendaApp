@@ -15,9 +15,9 @@
             success: function (result) {
                 agendaContainer.html(result);
             },
-            error: function () {
+            error: function (exception) {
                 agendaContainer.empty();
-                alert('Something went wrong.');
+                alert(exception);
             }
         });
     }
@@ -32,11 +32,11 @@
             url: 'Agenda/Create',
             type: 'POST',
             data: { 'model': data },
-            success: function (result) {
+            success: function () {
                 getAgendas();
             },
-            error: function (error) {
-                alert('Something went wrong.');
+            error: function (exception) {
+                alert(exception);
             }
         });
 

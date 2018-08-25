@@ -9,6 +9,7 @@ namespace AgendaApp.Models
     public class EditAgendaIndexVM
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
         [DataType(DataType.Date)]
         public DateTime? Deadline { get; set; }

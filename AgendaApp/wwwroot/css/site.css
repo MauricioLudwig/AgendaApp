@@ -1,0 +1,113 @@
+﻿/* Normalize */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #F8F8F8;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Landing page */
+
+.home-page-layout {
+    background: url(../img/background-image-login.jpeg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page-box {
+    background: white;
+    opacity: 0.85;
+    border-radius: 3px;
+    width: 25rem;
+    text-align: center;
+    padding: 3rem;
+}
+
+.home-page-header {
+    color: cadetblue;
+}
+
+/* General */
+
+.invalidFormSubmission {
+    font-weight: bold;
+    color: darkred;
+    font-size: small;
+}
+
+.validation-summary ul {
+    padding: 5px;
+    list-style-type: none;
+    color: darkred;
+    text-align: center;
+}
+
+.lead-no-margin {
+    margin: 0;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.card {
+    box-shadow: 0 2px #DCDCDC;
+}
+
+.checkbox {
+    color: #41D492;
+}
+
+/* Dashboard */
+
+.agenda-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agenda-card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-banner {
+    background: #f1f1f1;
+    color: black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.gear-icon-link {
+    text-decoration: none;
+    color: dimgray;
+}
+
+.gear-icon-link:hover {
+    color: cadetblue;
+}
+
+/* Item */
+
+.list-group-item-action {
+    cursor: pointer;
+}
+
+.item-checkbox-container {
+    margin-left: 1rem;
+}
+
+.item-checkbox-complete {
+    text-decoration: line-through;
+    opacity: 0.5;
+}

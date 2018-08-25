@@ -26,20 +26,18 @@
             }
             @foreach (var item in category.Items)
             {
-                if (item.Completed)
-                {
-                    <div class="form-group form-check item-checkbox-container">
+                <div class="form-group item-checkbox-container">
+                    @if (item.Completed)
+                    {
                         <input checked type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
-                        <label style="text-decoration:line-through;" class="form-check-label checked-item">@item.Description</label>
-                    </div>
-                }
-                else
-                {
-                    <div class="form-group form-check item-checkbox-container">
+                        <label class="form-check-label item-checkbox-complete">@item.Description</label>
+                    }
+                    else
+                    {
                         <input type="checkbox" class="form-check-input item-checkbox" id="@item.Id">
                         <label class="form-check-label">@item.Description</label>
-                    </div>
-                }
+                    }
+                </div>
             }
         }
 

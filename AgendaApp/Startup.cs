@@ -1,7 +1,6 @@
 ﻿using AgendaApp.Data;
 using AgendaApp.Data.Entities;
 using AgendaApp.Services;
-using AgendaApp.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 
 namespace AgendaApp
 {
