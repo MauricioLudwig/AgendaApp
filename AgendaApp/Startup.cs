@@ -27,6 +27,9 @@ namespace AgendaApp
             // Enable MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // Route preferences
+            services.AddRouting(options => options.LowercaseUrls = true);
+
             // DB
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AgendaDbContext>(options => options.UseSqlServer(connection));
