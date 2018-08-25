@@ -65,6 +65,8 @@ namespace AgendaApp.Controllers
         public IActionResult Edit(int id)
         {
             var agenda = agendaService.GetById(id);
+            if (agenda == null)
+                return RedirectToAction(nameof(AgendaController.Index));
 
             var model = new EditAgendaIndexVM
             {
@@ -81,6 +83,9 @@ namespace AgendaApp.Controllers
         public IActionResult Edit(EditAgendaIndexVM model)
         {
             var agenda = context.Agendas.Find(model.Id);
+            if (agenda == null)
+                return RedirectToAction(nameof(AgendaController.Index));
+
             agenda.Title = model.Title;
             agenda.Deadline = model.Deadline;
             context.SaveChanges();
